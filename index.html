@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="windows-1251">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player Page</title>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=iMQDCj2U75ODNP6vqZ1rIyWEHLA8lYFUlfiHgzGIUkUMw3uuS4Al3e96ooZbQuQLJV_MHjHXVUMDeg8oS3r0g5FAu_CvluWAkDX7LS__9Ng" charset="UTF-8"></script><style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .player-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="page-title">Введите название заголовка</h1>
+        <div class="player-container">
+            <div class="uitools" id="videoplayers" style="height:370px;width:610px;background-image: url('//pleer.videoplayers.club/web/img/loader.gif');background-repeat: no-repeat;background-position: center;background-color: #ccc;"></div>
+<script>
+var dataUrl=window.location.href;
+var my_script_play = document.createElement("script");
+my_script_play.setAttribute("src","//pleer.videoplayers.club/get_player?w=610&h=370&type=widget&kp_id=&name=&players=apicollaps,videocdn,hdvb,bazon,alloha,ustore,kodik,torrent&r_id=videoplayers&ani=COLLAPS&ati=&adi=&vni=VIDEOCDN&vti=&vdi=&hni=HDVB&hti=&hdi=&bni=BAZON&bti=&bdi=&alni=ALLOHATV&alti=&aldi=&usni=USTOREBZ&usti=&usdi=&koni=KODIK&koti=&kodi=&ru="+dataUrl);
+my_script_play.async = true;
+document.head.appendChild(my_script_play);
+</script>
+        </div>
+        <form id="title-form">
+            <label for="title-input">����� ������:</label>
+            <input type="text" id="title-input" placeholder="����� ������:" style="width: 100%; padding: 8px; margin-top: 10px;">
+            <button type="submit" style="margin-top: 10px; padding: 10px 20px;">�����...</button>
+        </form>
+    </div>
+
+    <script>
+        // Функция для загрузки заголовка из LocalStorage
+        function loadTitle() {
+            var savedTitle = localStorage.getItem('pageTitle');
+            if (savedTitle) {
+                document.getElementById('page-title').textContent = savedTitle;
+                document.getElementById('title-input').value = savedTitle;
+            }
+        }
+
+        // Загрузка заголовка при загрузке страницы
+        document.addEventListener('DOMContentLoaded', loadTitle);
+
+        // Обработка отправки формы
+        document.getElementById('title-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var newTitle = document.getElementById('title-input').value;
+            document.getElementById('page-title').textContent = newTitle;
+            localStorage.setItem('pageTitle', newTitle); // Сохранение заголовка в LocalStorage
+        });
+    </script>
+</body>
+</html>
